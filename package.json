@@ -1,0 +1,22 @@
+{
+	"name": "pause-refrain",
+	"version": "1.0.0",
+	"description": "while there is some stdin activity, periodically insert blank lines to stdout",
+	"main": "pause-refrain.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"bin": {
+		"pause-refrain": "./pause-refrain.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://archive.voodoowarez.com/pause-refrain"
+	},
+	"keywords": [],
+	"author": "rektide de la faye",
+	"license": "X11",
+	"dependencies": {
+		"byline": "^5.0.0"
+	}
+}
