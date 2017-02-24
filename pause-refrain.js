@@ -6,13 +6,13 @@ class PauseRefrain{
 		var
 		  byline= require( "byline"),
 		  emitter= byline( process.stdin)
-		if( this.mirrorOutput){
+		if( this.outputMirror){
 			emitter.on( "data", this.outputMirror)
 		}
 		emitter.on( "data", cb)
 		return ()=> {
 			emitter.removeListener( "data", cb)
-			if( this.mirrorOutput){
+			if( this.outputMirror){
 				emitter.on( "data", this.outputMirror)
 			}
 		}
@@ -97,7 +97,7 @@ module.exports= exports= PauseRefrain
 exports.defaults= {
 	addCredit: PauseRefrain.BasicAddCredit,
 	credit: 0,
-	interval: 1000,
+	interval: 2000,
 	input: PauseRefrain.NewlineInput,
 	intervalHandle: null,
 	outputPause: ()=> console.log(),
