@@ -3,13 +3,17 @@
 
 class PauseRefrain{
 	static NewlineInput( cb){
-		var
-		  byline= require( "byline"),
-		  emitter= byline( process.stdin)
-		if( this.outputMirror){
-			emitter.on( "data", this.outputMirror)
-		}
-		emitter.on( "data", cb)
+		process.nextTick(()=> {
+			var
+			  encoding= this.encoding,
+			  byline= require( "byline"),
+			  emitter= byline( process.stdin, {encoding})
+			if( this.outputMirror){
+				emitter.on( "data", this.outputMirror)
+			}
+			emitter.on( "data", cb)
+		})
+		// danger: do not call before next tick has fired
 		return ()=> {
 			emitter.removeListener( "data", cb)
 			if( this.outputMirror){
@@ -97,6 +101,7 @@ module.exports= exports= PauseRefrain
 exports.defaults= {
 	addCredit: PauseRefrain.BasicAddCredit,
 	credit: 0,
+	encoding: "utf8",
 	interval: 2000,
 	input: PauseRefrain.NewlineInput,
 	intervalHandle: null,
