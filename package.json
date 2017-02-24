@@ -1,6 +1,6 @@
 {
 	"name": "pause-refrain",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "while there is some stdin activity, periodically insert blank lines to stdout",
 	"main": "pause-refrain.js",
 	"scripts": {
